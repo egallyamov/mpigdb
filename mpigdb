@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# $OMPI_MCA_ns_nds_vpid is the OpenMPI equivalent to $LAMRANK
+RANK=${OMPI_COMM_WORLD_RANK} #OpenMPI
+#RANK=${PMI_RANK}              #MPICH 2
+
+
+r=$1
+shift
+
+dir=$(dirname $1)
+
+if [ "${RANK}" == "${r}" ] ; then
+#    exec gdb -x .gdbinit --annotate=3 -cd $dir $1
+    emacs --eval "(gud-gdb \"gdb --fullname $*\")"
+#    exec gdb -cd $dir $1
+#    exec gdb $*
+else
+  xterm -sb -rightbar -T "$(basename $1) [$RANK]"  -e "bash -c \"gdb -cd $dir $*\""
+fi
+
+

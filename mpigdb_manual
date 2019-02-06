@@ -1,0 +1,8 @@
+Manual for the mpigdb
+
+You call it in the following way:
+
+mpirun -np X ./mpigdb Y ./executable_file
+
+where X is the number of processors to split the job
+and Y is the processor's number whose job you gonna track in emacs 
