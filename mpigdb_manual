@@ -6,3 +6,8 @@ mpirun -np X ./mpigdb Y ./executable_file
 
 where X is the number of processors to split the job
 and Y is the processor's number whose job you gonna track in emacs 
+
+if additional arguments have to be passed:
+1. when in gdb mode - add breakpoints where necessary
+2. run the code with necessary arguments:
+  (gdb) r arg1 arg2 arg3
